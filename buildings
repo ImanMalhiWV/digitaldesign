@@ -1,0 +1,61 @@
+// * this digital scene is of two buildings with lights */
+
+/* this code draws the two buildings, by calling 
+   the drawBuilding function */
+   penUp();
+   moveTo(135,450);
+   drawBuilding(100,10);
+   moveTo(285,450);
+   drawBuilding(150,10);
+// this variable randomizes size of the windows
+   var r = randomNumber(2,3);
+/* this code draws the windows of the smaller building
+   by calling upon the drawAllWindows function */
+   drawAllWindows(-3,290,5);
+   drawAllWindows(-3,340,5);
+   drawAllWindows(-3,390,5);
+/* this code draws the windows of the bigger building
+   by calling upon the drawAllWindows function */
+   drawAllWindows(100,240,7);
+   drawAllWindows(100,290,7);
+   drawAllWindows(100,340,7);
+   drawAllWindows(100,390,7);
+/* this function has 3 parameters: x, y, and amount 
+   and this function draws the windows of the buildings
+   the x determines the x value, the y determines the y value
+   of the position of the windows
+   the amount parameter determines how many windows will be drawn */
+   function drawAllWindows(x,y,amount) {
+     for (var i = 0; i < amount; i++) {
+       x=x+20;
+       moveTo(30+x,y);
+       drawWindows(r);
+     }
+}
+/* this function draws the buildings, with 2 parameters
+   size and borderWidth */
+    function drawBuilding(size, borderWidth){
+      penDown();
+      penWidth(borderWidth);
+      for (var i = 0; i < 2; i++) {
+        moveForward(size*2);
+        turnLeft();
+        moveForward(size);
+        turnLeft();
+  }
+  penUp();
+}
+// this function draws a single window, with 1 parameter: size
+    function drawWindows(size){
+      penDown();
+      // the windows are yellow
+      penRGB(255, 255, 0);
+      penWidth(5);
+      for (var i = 0; i < 2; i++) {
+        moveForward(size);
+        turnLeft();
+        moveForward(size*2);
+        turnLeft();
+  }
+  penUp();
+}
